@@ -6,25 +6,22 @@ function watermark($image) {
 	// Set offset from bottom-right corner
 	$w_offset = 0;
 	$h_offset = 100;
-	$extension = strtolower(substr($image, strrpos($image, ".") + 1));
+	$extension = explode(mime_content_type($image))[1];
 
 	// Load image from file
 	switch ($extension)
 	{
-		case 'jpg':
-		$background = imagecreatefromjpeg($image);
-		break;
 		case 'jpeg':
-		$background = imagecreatefromjpeg($image);
-		break;
+			$background = imagecreatefromjpeg($image);
+			break;
 		case 'png':
-		$background = imagecreatefrompng($image);
-		break;
+			$background = imagecreatefrompng($image);
+			break;
 		case 'gif':
-		$background = imagecreatefromgif($image);
-		break;
+			$background = imagecreatefromgif($image);
+			break;
 		default:
-		die("Image is of unsupported type.");
+			die("Only JPG, PNG, and GIF files are supported.");
 	}
 
 	// Find base image size

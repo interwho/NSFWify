@@ -1,6 +1,6 @@
 # NSFWify
 
-Automatically make any image NSFW by adding a Brazzers logo overlay. For Terrible Hacks.
+Automatically make any image NSFW by adding a Brazzers logo overlay. For TerribleHacks.
 
 # License
 

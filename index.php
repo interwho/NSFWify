@@ -6,7 +6,7 @@ function watermark($image) {
 	// Set offset from bottom-right corner
 	$w_offset = 0;
 	$h_offset = 100;
-	$extension = explode(mime_content_type($image))[1];
+	$extension = explode(mime_content_type($image), '/')[1];
 
 	// Load image from file
 	switch ($extension)
@@ -53,7 +53,7 @@ function watermark($image) {
 	imagedestroy($overlay);
 }
 
-if ($_FILES['image']) {
+if (!empty($_FILES['image'])) {
 	watermark($_FILES['image']['tmp_name']);
 	die();
 }
@@ -65,8 +65,7 @@ if ($_FILES['image']) {
 </head>
 <body>
 	<form enctype="multipart/form-data" method="POST">
-		<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-		Choose a file to NSFWify: <input name="image" type="file" /><br>
+		Choose a file to NSFWify: <input name="image" type="file" value="" /><br>
 		<input type="submit" value="NSFWify!" />
 	</form>
 </body>
